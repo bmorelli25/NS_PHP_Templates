@@ -22,27 +22,24 @@ Template Name: Careers
 						<h3>We hope you’ll consider working with us.</h3>
 						<p>Norris &amp; Stevens offers the market knowledge and experience to assist any company or individual faced with a real estate challenge; from property management to sales and leasing opportunities, corporate relocations, investments, and development.</p>
 
-                        <?php $rows = get_field('careers'); ?>
+                        <!-- Begin Repeater Code -->
                         
 						<?php if( have_rows('careers') ):
-						while ( have_rows('careers') ) : the_row(); ?>
-						<h2 class="careers-title"><?php the_sub_field('title'); ?></h2>
-
-						<div class="careers-description">
-							<?php the_sub_field('description'); ?>
-						</div>
-
+						      while ( have_rows('careers') ) : the_row(); ?>
                         
-                        <?php if($rows[0]): ?>
-                        <a href="mailto:norris.stevens.careers@gmail.com?Subject=<?php the_sub_field('title'); ?>" class="button large">Apply</a>
-                        <?php else: ?>
-						<a href="mailto:norris.stevens.careers@gmail.com?Subject=<?php the_sub_field('title'); ?>" class="button large">Apply</a>
-                        <?php endif; ?>
+				            <h2 class="careers-title"><?php the_sub_field('title'); ?></h2>
 
-						<div class="hr"></div>
-						<?php endwhile; ?>
+                            <div class="careers-description"><?php the_sub_field('description'); ?></div>
+
+                            <a href="mailto:<?php the_sub_field('email_destination'); ?>?Subject=<?php the_sub_field('title'); ?>" class="button large">Apply</a>
+
+                            <div class="hr"></div>
+						
+                        <?php endwhile; ?>
 						<?php else : ?>
 						<?php endif; ?>
+                        
+                         <!-- End Repeater Code -->
 								
 						<div class="careers-legal">
 							<p>Norris & Stevens is an Equal Opportunity Employer. All qualified candidates will receive consideration for employment without regard to race, color, creed, religion, age, gender, national origin, disability, sexual orientation, US Veteran status, or any other factor protected by law.</p>
